@@ -1,0 +1,18 @@
+<html>
+
+<body>
+Facebook.com
+<hr/>
+<div id="passwords">
+
+</div>
+
+<script>
+    fetch('http://localhost:8080/passwords')
+    .then(response => response.json())
+    .then(passwords => {
+        document.getElementById('passwords').innerHTML = passwords.join('<br/>')
+    });
+</script>
+</body>
+</html>
