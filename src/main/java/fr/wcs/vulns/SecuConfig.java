@@ -20,6 +20,15 @@ public class SecuConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+		var configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:9000", "http://localhost:9001"));
+		configuration.setAllowedMethods(List.of("GET", "POST"));
+        var corsConfSource = new UrlBasedCorsConfigurationSource();
+        corsConfSource.registerCorsConfiguration("/**", configuration);
+
+		http.cors(cors -> cors.configurationSource(corsConfSource));
+
 		http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
 		return http.build();
 	}
