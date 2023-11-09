@@ -6,13 +6,17 @@ Facebook.com
 <div id="passwords">
 
 </div>
+<div id="errors">
+
+</div>
 
 <script>
     fetch('http://localhost:8080/passwords')
     .then(response => response.json())
     .then(passwords => {
         document.getElementById('passwords').innerHTML = passwords.join('<br/>')
-    });
+    })
+    .catch((e) => document.getElementById('errors').innerHTML = 'Erreur durant la requête : ' + e.toString() + '<br/>' + e.stack);
 </script>
 </body>
 </html>
