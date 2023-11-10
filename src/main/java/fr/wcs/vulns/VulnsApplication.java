@@ -10,34 +10,34 @@ import jakarta.annotation.PostConstruct;
 public class VulnsApplication {
 
 	@Autowired
-	VulnsTestRepository repository;
+	TestRepository repository;
 
 	@Autowired
-	VulnsUnsafeRepository unsafeRepository;
+	UnsafeTestRepository unsafeRepository;
 
 	@PostConstruct
 	public void onStartup() {
 		System.out.println("started");
 
-		var v = new VulnsEntity();
-		v.setName("csrf");
+		var v = new TestEntity();
+		v.setName("entity A");
 		repository.save(v);
 
-		v = new VulnsEntity();
-		v.setName("sqlinjection");
+		v = new TestEntity();
+		v.setName("entity B");
 		repository.save(v);
 
-		v = new VulnsEntity();
-		v.setName("brokenaccesscontrol");
+		v = new TestEntity();
+		v.setName("entity C");
 		repository.save(v);
 
-		v = new VulnsEntity();
-		v.setName("cryptographicfailure");
+		v = new TestEntity();
+		v.setName("entity D");
 		repository.save(v);
 
-		System.out.println(repository.count() + " vulns in db");
+		System.out.println(repository.count() + " testentity in db");
 
-		System.out.println("lastVulns =" + repository.getRecentVulns(1L));
+		System.out.println("lastTestEntities =" + repository.getRecent(1L));
 	}
 
 	public static void main(String[] args) {

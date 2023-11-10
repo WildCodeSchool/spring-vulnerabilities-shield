@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 
 @Repository
-public class VulnsUnsafeRepository {
+public class UnsafeTestRepository {
 
     @Autowired
     EntityManager entityManager;
 
-    public List<VulnsEntity> getFromNameUnsafe(String name) {
-        String query = "FROM VulnsEntity WHERE name = '" + name + "'";
+    public List<TestEntity> getFromNameUnsafe(String name) {
+        String query = "FROM TestEntity WHERE name = '" + name + "'";
         System.out.println("will execute unsafe query 😅 : " + query);
         return entityManager.createQuery(query).getResultList();
     }

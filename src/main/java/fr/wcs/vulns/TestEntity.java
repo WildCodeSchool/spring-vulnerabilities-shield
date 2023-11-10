@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class VulnsEntity {
+public class TestEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class VulnsEntity {
 
     @Override
     public String toString() {
-        return "VulnsEntity [id=" + id + ", name=" + name + "]";
+        return "TestEntity [id=" + id + ", name=" + name + "]";
     }
 
 }
