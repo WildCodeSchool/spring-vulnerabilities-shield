@@ -21,8 +21,8 @@ public class VulnTestController {
         return List.of("pass1", "12345", "oool");
     }
 
-    @GetMapping("/getVulnsByName")
-    public List<String> getEntitiesByName(@RequestParam String name) {
+    @GetMapping("/getTestEntitiesByName")
+    public List<String> getTestEntitiesByName(@RequestParam String name) {
         TestEntity testEntity = repository.findByName(name);
         return testEntity == null ? new ArrayList<>() : List.of(testEntity.getName());
     }
@@ -32,8 +32,8 @@ public class VulnTestController {
      * http://localhost:8080/getEntitiesByName_unsafe?name=%27OR%271%27=%271
      * to show SQL injection
      */
-    @GetMapping("/getEntitiesByName_unsafe")
-    public List<String> getVulnsByNameUnsafe(@RequestParam String name) {
+    @GetMapping("/getTestEntitiesByName_unsafe")
+    public List<String> getTestEntitiesByNameUnsafe(@RequestParam String name) {
         List<TestEntity> testEntities = unsafeRepository.getFromNameUnsafe(name);
         return testEntities.stream().map(e -> e.getName()).toList();
     }
