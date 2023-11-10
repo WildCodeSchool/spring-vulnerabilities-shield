@@ -8,10 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface TestRepository extends JpaRepository<TestEntity, Long> {
 
+    TestEntity findByName(String name);
+    
     @Query("FROM TestEntity where id > :minId")
     List<TestEntity> getRecent(@Param("minId") Long minId);
-
-    TestEntity findByName(String name);
-
-
 }
